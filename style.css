@@ -1,0 +1,223 @@
+/* Reinicio de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del cuerpo de la página */
+body {
+    background-color: #000; 
+    color: #fff; 
+    font-family: Arial, sans-serif;
+    min-height: 100vh; 
+    min-width: 320px; 
+    overflow-x: hidden; 
+}
+
+/* ===================================================
+    ESTILOS DEL HEADER (ESCRITORIO/TABLET)
+    ===================================================
+*/
+
+.main-header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 40px; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    min-height: 50px; 
+}
+
+.header-logo {
+    font-size: 1.5em; 
+    font-weight: normal; 
+    font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; 
+    letter-spacing: 2px;
+}
+
+.header-center {
+    font-size: 1.2em;
+    font-weight: 300;
+    text-transform: uppercase;
+    flex-grow: 1; 
+    text-align: center;
+    display: block; 
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px; 
+}
+
+.tool-logo {
+    width: 28px; 
+    height: 28px; 
+    object-fit: contain; 
+    cursor: pointer;
+    opacity: 0.8; 
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.tool-logo:hover {
+    opacity: 1; 
+    transform: scale(1.1); 
+}
+
+/* ===================================================
+    VIDEO DE FONDO (Fijo y Siempre Reproduciéndose)
+    ===================================================
+*/
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    overflow: hidden; 
+}
+
+#videoReel {
+    object-fit: cover; 
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+/* ===================================================
+    CONTENIDO Y GALERÍAS (ESCRITORIO/TABLET)
+    ===================================================
+*/
+
+.main-content {
+    position: relative; 
+    z-index: 1; 
+    padding: 0; 
+    margin: 0;
+}
+
+.reel-spacer {
+    margin-top: 50px; 
+    min-height: calc(100vh - 50px); 
+    margin-bottom: 0 !important; 
+    padding-bottom: 0 !important;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.video-gallery { 
+    background-color: #000; 
+    margin: 0 !important; 
+    padding: 20px 20px; 
+    display: block;
+}
+
+/* ESTILOS BASE PARA CADA FILA DE VIDEOS (2, 4, 3) - ESCRITORIO */
+.video-row-2, .video-row-4, .video-row-3 {
+    display: flex; 
+    flex-direction: row; 
+    gap: 10px; 
+    margin-bottom: 20px; 
+}
+
+.video-row-3 {
+    margin-bottom: 0;
+}
+
+/* ITEMS EN ESCRITORIO: Usan flex: 1 para dividir el espacio de la fila */
+.video-item {
+    flex: 1; 
+}
+.video-item-4 {
+    flex: 1; 
+}
+.video-item-3 {
+    flex: 1; 
+}
+
+/* ESTILOS COMUNES PARA TODOS LOS ITEMS Y VIDEOS */
+.video-item, .video-item-4, .video-item-3 {
+    overflow: hidden; 
+    border-radius: 8px;
+}
+
+.video-gallery video { 
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    display: block;
+    border-radius: inherit; 
+}
+
+
+/* ===================================================
+    MEDIA QUERY PARA MÓVILES (< 768px)
+    ===================================================
+*/
+
+@media (max-width: 768px) {
+    
+    /* HEADER MÓVIL (Ajustes de espacio) */
+    .main-header {
+        padding: 8px 15px; 
+        min-height: 40px; 
+    }
+    
+    .header-center {
+        display: none; 
+    }
+    
+    .reel-spacer {
+        margin-top: 40px; 
+        min-height: calc(100vh - 40px); 
+    }
+    
+    /* GALERÍAS EN MÓVIL: Apilamiento vertical (TikTok/Reels) */
+    
+    .video-gallery {
+        /* Eliminamos padding lateral para que los videos toquen el borde */
+        padding: 10px 0; 
+    }
+    
+    /* REFUERZO CLAVE: TODAS LAS FILAS SE APILAN VERTICALMENTE */
+    .video-row-2, .video-row-4, .video-row-3 {
+        /* CLAVE: Forzamos la dirección vertical */
+        flex-direction: column !important; 
+        gap: 0 !important; 
+        margin-bottom: 1px !important; 
+        display: flex !important; 
+        width: 100% !important; 
+    }
+    
+    .video-row-3 {
+        margin-bottom: 0 !important;
+    }
+    
+    /* REFUERZO CLAVE: Los ítems de video ocupan el 100% del ancho y se apilan */
+    .video-item, .video-item-4, .video-item-3 {
+        width: 100% !important; 
+        flex: none !important; 
+        max-width: 100% !important; 
+        border-radius: 0 !important; 
+        margin-bottom: 0 !important;
+    }
+
+    /* REFUERZO CLAVE: Los videos se adaptan al 100% del ancho */
+    .video-gallery video {
+        width: 100% !important; 
+        height: auto !important; 
+        border-radius: 0 !important; 
+    }
+}
